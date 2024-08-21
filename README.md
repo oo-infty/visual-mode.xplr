@@ -64,6 +64,64 @@ Currently, [xplr](https://github.com/sayanarijit/xplr) doesn't have builtin visu
   }
   ```
 
+### Nix with Home Manager
+
+Use the following code as a template for your Home Manager configuration:
+
+```nix
+{ pkgs, ... }:
+
+{
+  programs.xplr.enable = true;
+
+  programs.xplr.plugins = {
+    visual-mode = pkgs.fetchFromGitHub {
+      owner = "oo-infty";
+      repo = "visual-mode.xplr";
+      rev = "..."; # Fill this field with the latest revision.
+      hash = "..."; # Fill this field with the hash of the latest revision.
+    };
+
+    # ...
+  };
+
+  programs.xplr.extraConfig = ''
+    -- ...
+
+    require("visual-mode").setup{
+      visual_key = "v",
+      exit_visual_key = "v",
+      up_keys = { "up", "k" },
+      down_keys = { "down", "j" },
+      extra_keys = {
+        ["K"] = {
+          help = "up multi-lines",
+          messages = {
+            { CallLuaSilently = "custom.visual_mode_up" },
+            { CallLuaSilently = "custom.visual_mode_up" },
+            { CallLuaSilently = "custom.visual_mode_up" },
+            { CallLuaSilently = "custom.visual_mode_up" },
+            { CallLuaSilently = "custom.visual_mode_up" },
+          },
+        },
+        ["J"] = {
+          help = "down multi-lines",
+          messages = {
+            { CallLuaSilently = "custom.visual_mode_down" },
+            { CallLuaSilently = "custom.visual_mode_down" },
+            { CallLuaSilently = "custom.visual_mode_down" },
+            { CallLuaSilently = "custom.visual_mode_down" },
+            { CallLuaSilently = "custom.visual_mode_down" },
+          },
+        },
+      },
+    }
+
+    -- ...
+  '';
+}
+```
+
 ## API Reference
 
 ### `xplr.fn.custom.visual_mode_init(app)`
