@@ -45,7 +45,9 @@ local function get_next_index(app)
 end
 
 -- Exported functions
-xplr.fn.custom.visual_mode_init = function(app)
+xplr.fn.custom.visual_mode = {}
+
+xplr.fn.custom.visual_mode.init = function(app)
   state = "init"
   start_index = app.directory_buffer.focus
   bounded_index = xplr.config.general.enforce_bounded_index_navigation
@@ -56,7 +58,7 @@ xplr.fn.custom.visual_mode_init = function(app)
   }
 end
 
-xplr.fn.custom.visual_mode_exit = function(_)
+xplr.fn.custom.visual_mode.exit = function(_)
   state = nil
   start_index = nil
   bounded_index = nil
@@ -66,7 +68,7 @@ xplr.fn.custom.visual_mode_exit = function(_)
   }
 end
 
-xplr.fn.custom.visual_mode_up = function(app)
+xplr.fn.custom.visual_mode.up = function(app)
   -- Do nothing when there is no node in directory.
   if app.directory_buffer.total == 0 then
     return {}
@@ -141,7 +143,7 @@ xplr.fn.custom.visual_mode_up = function(app)
   end
 end
 
-xplr.fn.custom.visual_mode_down = function(app)
+xplr.fn.custom.visual_mode.down = function(app)
   -- Do nothing when there is no node in directory.
   if app.directory_buffer.total == 0 then
     return {}
@@ -228,7 +230,7 @@ local function setup(args)
     xplr.config.modes.builtin.default.key_bindings.on_key[args.visual_key] = {
       help = "visual",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_init" },
+        { CallLuaSilently = "custom.visual_mode.init" },
       },
     }
   end
@@ -247,7 +249,7 @@ local function setup(args)
     visual_mode.key_bindings.on_key[args.exit_visual_key] = {
       help = "exit visual mode",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_exit" },
+        { CallLuaSilently = "custom.visual_mode.exit" },
       },
     }
   end
@@ -256,7 +258,7 @@ local function setup(args)
     visual_mode.key_bindings.on_key[up_key] = {
       help = "up",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
       },
     }
   end
@@ -265,7 +267,7 @@ local function setup(args)
     visual_mode.key_bindings.on_key[down_key] = {
       help = "down",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
       },
     }
   end

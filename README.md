@@ -43,21 +43,21 @@ Currently, [xplr](https://github.com/sayanarijit/xplr) doesn't have builtin visu
       ["K"] = {
         help = "up multi-lines",
         messages = {
-          { CallLuaSilently = "custom.visual_mode_up" },
-          { CallLuaSilently = "custom.visual_mode_up" },
-          { CallLuaSilently = "custom.visual_mode_up" },
-          { CallLuaSilently = "custom.visual_mode_up" },
-          { CallLuaSilently = "custom.visual_mode_up" },
+          { CallLuaSilently = "custom.visual_mode.up" },
+          { CallLuaSilently = "custom.visual_mode.up" },
+          { CallLuaSilently = "custom.visual_mode.up" },
+          { CallLuaSilently = "custom.visual_mode.up" },
+          { CallLuaSilently = "custom.visual_mode.up" },
         },
       },
       ["J"] = {
         help = "down multi-lines",
         messages = {
-          { CallLuaSilently = "custom.visual_mode_down" },
-          { CallLuaSilently = "custom.visual_mode_down" },
-          { CallLuaSilently = "custom.visual_mode_down" },
-          { CallLuaSilently = "custom.visual_mode_down" },
-          { CallLuaSilently = "custom.visual_mode_down" },
+          { CallLuaSilently = "custom.visual_mode.down" },
+          { CallLuaSilently = "custom.visual_mode.down" },
+          { CallLuaSilently = "custom.visual_mode.down" },
+          { CallLuaSilently = "custom.visual_mode.down" },
+          { CallLuaSilently = "custom.visual_mode.down" },
         },
       },
     },
@@ -97,21 +97,21 @@ Use the following code as a template for your Home Manager configuration:
         ["K"] = {
           help = "up multi-lines",
           messages = {
-            { CallLuaSilently = "custom.visual_mode_up" },
-            { CallLuaSilently = "custom.visual_mode_up" },
-            { CallLuaSilently = "custom.visual_mode_up" },
-            { CallLuaSilently = "custom.visual_mode_up" },
-            { CallLuaSilently = "custom.visual_mode_up" },
+            { CallLuaSilently = "custom.visual_mode.up" },
+            { CallLuaSilently = "custom.visual_mode.up" },
+            { CallLuaSilently = "custom.visual_mode.up" },
+            { CallLuaSilently = "custom.visual_mode.up" },
+            { CallLuaSilently = "custom.visual_mode.up" },
           },
         },
         ["J"] = {
           help = "down multi-lines",
           messages = {
-            { CallLuaSilently = "custom.visual_mode_down" },
-            { CallLuaSilently = "custom.visual_mode_down" },
-            { CallLuaSilently = "custom.visual_mode_down" },
-            { CallLuaSilently = "custom.visual_mode_down" },
-            { CallLuaSilently = "custom.visual_mode_down" },
+            { CallLuaSilently = "custom.visual_mode.down" },
+            { CallLuaSilently = "custom.visual_mode.down" },
+            { CallLuaSilently = "custom.visual_mode.down" },
+            { CallLuaSilently = "custom.visual_mode.down" },
+            { CallLuaSilently = "custom.visual_mode.down" },
           },
         },
       },
@@ -124,23 +124,23 @@ Use the following code as a template for your Home Manager configuration:
 
 ## API Reference
 
-### `xplr.fn.custom.visual_mode_init(app)`
+### `xplr.fn.custom.visual_mode.init(app)`
 
 Initialize the global state and enter the visual mode. Usually, this is used by `setup()` internally and not intended to be called manually.
 
-### `xplr.fn.custom.visual_mode_exit(app)`
+### `xplr.fn.custom.visual_mode.exit(app)`
 
 Unset the global state and exit the visual mode. Usually, this is used by `setup()` internally and not intended to be called manually.
 
-### `xplr.fn.custom.visual_mode_up(app)`
+### `xplr.fn.custom.visual_mode.up(app)`
 
 Move the cursor up and update the selection range. The selection status of the entry across the selection boudnary is not set to a fixed value but toggled. Selection won't change unless the cursor is able to move.
 
 You can use this as the basic building block to set up your own key bindings.
 
-### `xplr.fn.custom.visual_mode_down(app)`
+### `xplr.fn.custom.visual_mode.down(app)`
 
-Move the cursor down and update the selection range. This function is similar to `xplr.fn.custom.visual_mode_up`.
+Move the cursor down and update the selection range. This function is similar to `xplr.fn.custom.visual_mode.up`.
 
 ### `require("visual-mode").setup(args)`
 
